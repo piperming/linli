@@ -12,13 +12,13 @@
         <input class="fright" type="text" name="" id="">
         <input class="fright" type="password" name="" id="">
         <input class="fleft vcode" type="text" name="" id="">
-        <img class="fleft" src="<?php echo $this->config->item('base_url');?>index.php/login/vcode" onclick="changvcode(this)" title="点击切换验证码">
+        <img class="fleft" src="/login/vcode" onclick="changvcode(this)" title="点击切换验证码">
         <div class="clearboth"></div>
         <a class="buttom fright" href="">登录</a>
     </div>
 <script type="text/javascript">
     function changvcode(e){
-        $(e).attr("src","<?php echo $this->config->item('base_url');?>index.php/login/vcode?t="+Math.random());
+        $(e).attr("src","/login/vcode?t="+Math.random());
     }
 </script>
 </body>

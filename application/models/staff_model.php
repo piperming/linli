@@ -25,4 +25,16 @@ class Staff_model extends MY_Model{
         );
         return $this->get($options);
     }
+
+    /**
+     * 更具ID删除员工记录
+     * @param $id
+     * @return bool
+     */
+    function del_staff_buy_id($id){
+        if(empty($id) || intval($id)==0){
+            return false;
+        }
+        return $this->delete($id);
+    }
 }

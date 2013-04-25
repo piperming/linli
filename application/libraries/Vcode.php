@@ -13,7 +13,8 @@ class Vcode {
 
 		//构造方法初始化
 		public function __construct(){
-			$this->font = '/var/www/linli/html/font/font.TTF';
+            $file_path = rtrim(BASEPATH , 'system/').'/html/font/font.TTF';
+            $this->font = $file_path;
 		}
 
 		//生成随机码

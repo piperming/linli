@@ -28,8 +28,35 @@
         <td class="center"><?php echo $staff['phone'];?></td>
         <td class="center"><?php echo $staff['tel'];?></td>
         <td class="center"><?php echo date('Y-m-d H:i:s' , $staff['ctime']);?></td>
-        <td class="center"><a href="">编辑</a><a href="">删除</a></td>
+        <td class="center"><a href="javascript:void(0)" class="edit_btn">编辑</a><a href="javascript:void(0)" sid="<?php echo $staff['id']?>" class="del_btn">删除</a></td>
     </tr>
     <?php endforeach?>
 </tbody>
 </table>
+<script id="editTemplate" type="text/x-jquery-tmpl">
+   <h5>编辑</h5>
+    ID:${id}
+</script>
+<script type="text/javascript">
+    $('.edit_btn').click(function(){
+
+    });
+</script>
+<script type="text/javascript">
+    $('.del_btn').click(function(){
+        var del_node = $(this);
+        var staff_id = del_node.attr('sid');
+        $.get(
+            '/staff/del/'+staff_id,
+            function(data){
+                var status = eval(data);
+                if(status.status == 0){
+                    alert('删除失败!');
+                }else{
+                    alert('删除成功!');
+                    del_node.html('');
+                }
+            }
+        );
+    });
+</script>
