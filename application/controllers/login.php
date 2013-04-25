@@ -13,9 +13,9 @@ class Login extends MY_Controller {
      * 获取验证码保存到session
      */
     function vcode(){
-        session_start();
+//        session_start();
         $this->load->library('Vcode' , 'vcode');
-        $_SESSION['vcode'] = $this->vcode()->get_code();
+       // $_SESSION['vcode'] = $this->vcode()->get_code();
         $this->vcode->show_img();
     }
 }

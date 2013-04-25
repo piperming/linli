@@ -18,6 +18,7 @@
  * @property CI_Pager $pager
  * @property CI_Pager_topic $pager_topic
  *
+ * @property Vcode    $vcode
  * @property Staff_model    $staff
  */
 class MY_Controller extends CI_Controller{
