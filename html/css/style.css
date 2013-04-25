@@ -5,7 +5,7 @@ a img{border:0;}
 a{color:#000;}
 a:link,a:visited,a:active,a:hover{text-decoration:none;}
 .clearboth {clear:both;font-size:0px;}
-input {vertical-align:middle;}
+input {vertical-align:middle; border:1px solid #ccc;}
 .noneBox {display:none;}
 .clear{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:0;}
 .border_radius{border-radius: 5px;}
@@ -49,7 +49,9 @@ input {vertical-align:middle;}
 .close_bar{float:left;height:200px;width:8px;margin-left:8px!important;margin-left:4px;}
 .close{background:url(../images/center0.gif) no-repeat;cursor:pointer;}
 .closed{background:url(../images/center.gif) no-repeat;cursor:pointer;}
-
+#edit_table{margin:30px 60px;}
+#edit_table td{text-indent: 10px;}
+#edit_table input{width:230px; height:22px; text-indent: 6px;}
 
 /*----right---------------------------*/
 .right{width:auto; height:600px; margin-left:20px!important; margin-left:10px; padding-left:20px; border:1px solid #b4b4b4;background:#fff;}
