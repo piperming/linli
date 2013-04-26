@@ -37,4 +37,17 @@ class Staff_model extends MY_Model{
         }
         return $this->delete($id);
     }
+
+    /**
+     * 更新员工信息记录
+     * @param $id
+     * @param $data
+     * @return bool
+     */
+    function update_staff($id , $data){
+        if(!is_array($data) || intval($id)==0){
+            return false;
+        }
+        return $this->update($data , $id);
+    }
 }

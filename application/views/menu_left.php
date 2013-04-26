@@ -11,9 +11,9 @@
 			<div class="left02top_c">员工信息管理</div>
 		</div>
 	    <div class="left02down">
-            <div class="option"><a href="/satff" >员工列表</a></div>
-	        <div class="option"><a href="" >新增员工</a></div>
-            <div class="option"><a href="" >新增任务</a></div>
+            <div class="option"><a href="/staff" >员工列表</a></div>
+	        <div class="option"><a href="/staff/add" >新增员工</a></div>
+            <div class="option"><a href="/staff/task" >新增任务</a></div>
 		</div>
 	</div>
 	<div class="left02">
