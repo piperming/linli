@@ -15,3 +15,12 @@ $(document).ready(function(){
         }
     });
 });
+
+/*
+ * 关闭弹出层
+ */
+$('#close_btn').live('click' , function(){
+        $.unblockUI({
+            fadeOut:200
+        });
+});

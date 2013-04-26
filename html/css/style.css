@@ -52,6 +52,8 @@ input {vertical-align:middle; border:1px solid #ccc;}
 #edit_table{margin:30px 60px;}
 #edit_table td{text-indent: 10px;}
 #edit_table input{width:230px; height:22px; text-indent: 6px;}
+.save{width:386px; height: 30px; margin:0 auto; margin-bottom:20px;}
+.save a{float: right;}
 
 /*----right---------------------------*/
 .right{width:auto; height:600px; margin-left:20px!important; margin-left:10px; padding-left:20px; border:1px solid #b4b4b4;background:#fff;}

@@ -46,6 +46,7 @@
         <tr><td>座机号码</td><td><input type="text" name="" value="${tel}"/></td></tr>
         <tr><td>注册时间</td><td>${ctime}</td></tr>
     </table>
+    <div class="save"><a href="" class="buttom">保存</a></div>
 </script>
 <script type="text/javascript">
     $('.edit_btn').click(function(){
@@ -57,17 +58,6 @@
             json[key] = $(this).text();
         });
         var content =  $('#editTemplate').tmpl(json);
-//        $.dialog({
-//            position: ['center', 70],
-//            resizable: false,
-//            draggable: false,
-//            title: '编辑员工信息',
-//            modal: true,
-//            width: 850,
-//            height:700,
-//            minWidth: 700,
-//            maxWidth: 800
-//        });
         $.blockUI({
             theme:true,
             title:'编辑员工信息',
@@ -79,6 +69,7 @@
             }
         });
     });
+
 </script>
 <script type="text/javascript">
     $('.del_btn').click(function(){
