@@ -10,8 +10,9 @@
                 <input type="radio" name="sex" value="1">女
             </td>
         </tr>
-        <tr><td>生日</td><td><input type="text" name="brithday"/></td></tr>
         <tr><td>邮箱</td><td><input type="text" name="email"/></td></tr>
+        <tr><td>密码</td><td><input type="password" name="passwd" id=""></td></tr>
+        <tr><td>生日</td><td><input type="text" name="brithday"/></td></tr>
         <tr><td>教育程度</td><td><input type="text" name="education"/></td></tr>
         <tr><td>手机号码</td><td><input type="text" name="phone"/></td></tr>
         <tr><td>座机号码</td><td><input type="text" name="tel"/></td></tr>

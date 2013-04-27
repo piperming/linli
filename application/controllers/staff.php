@@ -67,10 +67,11 @@ class Staff extends MY_Controller{
      * 添加新员工
      */
     function save_staff(){
-        $data['staff_name'] = $data['staff_number'] = $data['sex'] = $data['brithday'] = $data['email'] = $data['education'] = $data['tel'] = $data['phone'] = '';
+        $data['staff_name'] = $data['staff_number'] = $data['passwd'] = $data['sex'] = $data['brithday'] = $data['email'] = $data['education'] = $data['tel'] = $data['phone'] = '';
         $data['staff_name'] = $this->input->post('staff_name');
         $data['staff_number'] = $this->input->post('staff_number');
         $data['sex'] = $this->input->post('sex');
+        $data['passwd'] = $this->input->post('passwd');
         $data['brithday'] = $this->input->post('brithday');
         $data['email'] = $this->input->post('email');
         $data['education'] = $this->input->post('education');
@@ -83,10 +84,14 @@ class Staff extends MY_Controller{
                 exit;
             }
             if($key == 'email'){
-                if(!preg_match('/^\[a-z][a-z0-9_]*@[a-z0-9]+.[a-z]+(.[a-z]+)*$/i' , $val)){
+                if(!preg_match('/^[a-z][a-z0-9_]*@[a-z0-9]+.[a-z]+(.[a-z]+)*$/i' , $val)){
                     echo json_encode(array('status'=>0 , 'msg'=>'邮箱格式错误!'));
                     exit;
                 }
+            }
+            if($key == 'passwd'){
+                $new_data['passwd'] = md5($val);
+                continue;
             }
             $new_data[$key] = strip_tags($val);
         }
