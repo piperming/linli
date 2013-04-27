@@ -96,16 +96,20 @@
 <script type="text/javascript">
     $('.del_btn').click(function(){
         var del_node = $(this);
+        var del_html = $(this).parent('td').parent('tr');
         var staff_id = del_node.attr('sid');
+        if(!confirm('确定删除?')){
+            return;
+        }
         $.get(
             '/staff/del/'+staff_id,
             function(data){
-                var status = eval(data);
+                var status = $.parseJSON(data);
                 if(status.status == 0){
                     alert('删除失败!');
                 }else{
                     alert('删除成功!');
-                    del_node.html('');
+                    del_html.html('');
                 }
             }
         );

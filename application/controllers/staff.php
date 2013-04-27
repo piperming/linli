@@ -1,5 +1,9 @@
 <?php
 class Staff extends MY_Controller{
+    function __construct(){
+        parent::__construct();
+        $this->load->model('Staff_model' , 'staff');
+    }
     /**
      * 成员列表
      */
@@ -13,11 +17,10 @@ class Staff extends MY_Controller{
     /**
      * 更新员工数据
      */
-    function save_staff(){
+    function update_staff(){
         if(!$this->input->is_ajax_request()){
             return;
         }
-        $this->load->model('Staff_model' , 'staff');
         $id = $data['email'] = $data['education'] = $data['phone'] = $data['tel'] = '';
         $id = $this->input->post('id');
         $data['email'] = $this->input->post('email');
@@ -52,8 +55,45 @@ class Staff extends MY_Controller{
         }
     }
 
+    /**
+     * 新增员工
+     */
     function add_staff(){
         $data['tpl'] = 'staff/add_staff';
         $this->_display('main' , $data);
+    }
+
+    /**
+     * 添加新员工
+     */
+    function save_staff(){
+        $data['staff_name'] = $data['staff_number'] = $data['sex'] = $data['brithday'] = $data['email'] = $data['education'] = $data['tel'] = $data['phone'] = '';
+        $data['staff_name'] = $this->input->post('staff_name');
+        $data['staff_number'] = $this->input->post('staff_number');
+        $data['sex'] = $this->input->post('sex');
+        $data['brithday'] = $this->input->post('brithday');
+        $data['email'] = $this->input->post('email');
+        $data['education'] = $this->input->post('education');
+        $data['phone'] = $this->input->post('phone');
+        $data['tel'] = $this->input->post('tel');
+        $new_data = array();
+        foreach($data as $key=>$val){
+            if($val==''){
+                echo json_encode(array('status'=>0 , 'msg'=>'数据不能为空!'));
+                exit;
+            }
+            if($key == 'email'){
+                if(!preg_match('/^\[a-z][a-z0-9_]*@[a-z0-9]+.[a-z]+(.[a-z]+)*$/i' , $val)){
+                    echo json_encode(array('status'=>0 , 'msg'=>'邮箱格式错误!'));
+                    exit;
+                }
+            }
+            $new_data[$key] = strip_tags($val);
+        }
+        $new_data['ctime'] = time();
+        if($this->staff->insert($new_data)){
+            echo json_encode(array('status'=>1));
+            exit;
+        }
     }
 }

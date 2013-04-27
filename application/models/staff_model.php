@@ -31,7 +31,7 @@ class Staff_model extends MY_Model{
      * @param $id
      * @return bool
      */
-    function del_staff_buy_id($id){
+    function del_staff_by_id($id){
         if(empty($id) || intval($id)==0){
             return false;
         }
