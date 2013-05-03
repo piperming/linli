@@ -8,8 +8,15 @@ class Staff extends MY_Controller{
      * 成员列表
      */
     function index(){
-        $this->load->model('Staff_model' , 'staff');
-        $data['staffs'] = $this->staff->staff_list();
+        $name = $number = '';
+        $number = $this->input->get('number');
+        $name = $this->input->get('name');
+        $condition = '';
+        $number && $condition .= ($condition?' AND ' : '').'staff_number = "'.$number.'"';
+        $name && $condition .= ($condition?' AND ' : '').'staff_name like "%'.$name.'%"';
+        $data['staffs'] = $this->staff->get(array(
+            'condition'=>$condition
+        ));
         $data['tpl'] = 'staff/staff_list';
         $this->_display('main' , $data);
     }
@@ -17,7 +24,7 @@ class Staff extends MY_Controller{
     /**
      * 更新员工数据
      */
-    function update_staff(){
+    function staff_update(){
         if(!$this->input->is_ajax_request()){
             return;
         }
@@ -58,15 +65,15 @@ class Staff extends MY_Controller{
     /**
      * 新增员工
      */
-    function add_staff(){
-        $data['tpl'] = 'staff/add_staff';
+    function staff_add(){
+        $data['tpl'] = 'staff/staff_add';
         $this->_display('main' , $data);
     }
 
     /**
      * 添加新员工
      */
-    function save_staff(){
+    function staff_save(){
         $data['staff_name'] = $data['staff_number'] = $data['passwd'] = $data['sex'] = $data['brithday'] = $data['email'] = $data['education'] = $data['tel'] = $data['phone'] = '';
         $data['staff_name'] = $this->input->post('staff_name');
         $data['staff_number'] = $this->input->post('staff_number');
@@ -101,4 +108,5 @@ class Staff extends MY_Controller{
             exit;
         }
     }
+
 }

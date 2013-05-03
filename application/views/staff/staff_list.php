@@ -1,4 +1,12 @@
 <div class="location">员工列表</div>
+<div class="search">
+        <span>工号:</span>
+        <input type="text" id="keywords_number">
+        <span>姓名:</span>
+        <input type="text" id="keywords_name">
+        <a class="buttom" id="search_btn" href="javascript:void(0)">搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="buttom" href="/staff">查看所有</a>
+</div>
 <table class="fullwidth" cellpadding="0" cellspacing="0" border="0">
     <thead>
     <tr>
@@ -79,7 +87,7 @@
             json[key] = $(this).val();
         });
         $.post(
-                '/staff/save_staff',
+                '/staff/staff_update',
                 json,
                 function(data){
                     if(data.status==0){
@@ -113,5 +121,18 @@
                 }
             }
         );
+    });
+</script>
+<script type="text/javascript">
+    $("#search_btn").click(function(){
+        var keywords_number = '';
+        var keywords_name = '';
+         keywords_number = $('#keywords_number').val();
+         keywords_name = $('#keywords_name').val();
+        if(keywords_number=='' && keywords_name==''){
+            return false;
+        }
+        var url = '/staff?number='+keywords_number+'&name='+keywords_name;
+        location.href= url;
     });
 </script>

@@ -20,6 +20,7 @@
  *
  * @property Vcode    $vcode
  * @property Staff_model    $staff
+ * @property Task_model    $task
  */
 class MY_Controller extends CI_Controller{
     protected $tpl_data = array();
