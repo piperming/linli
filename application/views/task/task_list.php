@@ -1,11 +1,20 @@
 <div class="location"><?=$title?></div>
 <div class="search">
-        <span>工号:</span>
-        <input type="text" id="keywords_number">
-        <span>姓名:</span>
-        <input type="text" id="keywords_name">
-        <a class="buttom" id="search_btn" href="javascript:void(0)">搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="buttom" href="/task/day">查看所有</a>
+    <ul>
+       <li><span>工号:</span><input type="text" id="keywords_number"></li>
+        <li><span>姓名:</span><input type="text" id="keywords_name"></li>
+        <li>
+            <span>时间:</span>
+            <input class="time" type="text" name="" id="time_left" value="" placeholder="2013-01-01"/>
+            <span>-</span>
+            <input class="time" type="text" name="" id="time_right" value="" placeholder="2013-01-01"/>
+            <span id="time_error">时间格式错误</span>
+        </li>
+        <li>
+            <a class="buttom" id="search_btn" href="javascript:void(0)">搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="buttom" href="/task/day">查看所有</a>
+        </li>
+    </ul>
 </div>
 <table class="fullwidth" cellpadding="0" cellspacing="0" border="0">
     <thead>
@@ -39,12 +48,20 @@
     $("#search_btn").click(function(){
         var keywords_number = '';
         var keywords_name = '';
-         keywords_number = $('#keywords_number').val();
-         keywords_name = $('#keywords_name').val();
-        if(keywords_number=='' && keywords_name==''){
-            return false;
-        }
-        var url = '/task/day?number='+keywords_number+'&name='+keywords_name;
+        var time_left = '';
+        var time_right = '';
+        keywords_number = $('#keywords_number').val();
+        keywords_name = $('#keywords_name').val();
+        time_left = $('#time_left').val();
+        time_right = $('#time_right').val();
+        $('.time').each(function(){
+            var time = $(this).val();
+            if(!check_date(time)){
+                $('#time_error').show();
+//                return false;
+            }
+        });
+        var url = '/task/day?number='+keywords_number+'&name='+keywords_name+'&lt='+time_left+'&rt='+time_right;
         location.href= url;
     });
 </script>

@@ -23,8 +23,7 @@
 			<div class="left02top_c">报表统计</div>
 		</div>
 	    <div class="left02down">
-	        <div class="option"><a href="/task/day" >日工作指标</a></div>
-            <div class="option"><a href="/task/month" >月工作指标</a></div>
+	        <div class="option"><a href="/task/day" >工作指标</a></div>
 		</div>
 	</div>
     <div class="left02">

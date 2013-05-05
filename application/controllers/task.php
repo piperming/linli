@@ -42,16 +42,22 @@ class Task extends MY_Controller{
      * 每日工作指标统计
      */
     public function task_day(){
-        $name = $number = '';
+        $name = $number = $lt = $rt = '';
         $number = $this->input->get('number');
+        $name = $this->input->get('name');
+        $lt = $this->input->get('lt');
+        $rt = $this->input->get('rt');
         $name = $this->input->get('name');
         $condition = '';
         $number && $condition .= ($condition?' AND ' : '').'staff_number = "'.$number.'"';
         $name && $condition .= ($condition?' AND ' : '').'staff_name like "%'.$name.'%"';
+        $lt && $rt && $condition .= ($condition?' AND ' : '').'ctime > '.strtotime($lt).' AND ctime < '.strtotime($rt);
         $data['tasks'] = $this->task->get(array(
             'condition'=>$condition
         ));
-        $data['title'] = '每日工作指标报表';
+        //$data['ltime'] = $lt;
+        //$data['rtime'] = $rt;
+        $data['title'] = '工作指标报表';
         $data['tpl'] = 'task/task_list';
         $this->_display('main' , $data);
     }
