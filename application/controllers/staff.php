@@ -3,6 +3,7 @@ class Staff extends MY_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('Staff_model' , 'staff');
+        $this->_is_login();
     }
     /**
      * 成员列表
@@ -107,6 +108,10 @@ class Staff extends MY_Controller{
             echo json_encode(array('status'=>1));
             exit;
         }
+    }
+
+    function passwd(){
+
     }
 
 }

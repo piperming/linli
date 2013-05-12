@@ -56,7 +56,7 @@ textarea,input {vertical-align:middle; border:1px solid #ccc;}
 .save a{float: right;}
 
 /*----right---------------------------*/
-.right{width:auto; height:600px; margin-left:20px!important; margin-left:10px; padding-left:20px; border:1px solid #b4b4b4;background:#fff;}
+.right{width:auto; height:auto; min-height:500px; margin-left:20px!important; margin-left:10px; padding-left:20px; border:1px solid #b4b4b4;background:#fff; padding-bottom:40px;}
 .right span{color:#666;}
 .location{font-size: 16px; width: 300px; height:50px; text-indent: 30px;line-height: 50px; font-weight: bold; background: url(../images/location.png) 8px 14px no-repeat;}
 table{border-collapse: collapse;}

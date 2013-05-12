@@ -21,6 +21,8 @@
  * @property Vcode    $vcode
  * @property Staff_model    $staff
  * @property Task_model    $task
+ * @property Custom_model    $custom
+ * @property Apply_model    $apply
  */
 class MY_Controller extends CI_Controller{
     protected $tpl_data = array();
@@ -33,6 +35,7 @@ class MY_Controller extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->database();
+        session_start();
     }
 
     /**
@@ -62,11 +65,13 @@ class MY_Controller extends CI_Controller{
         $this->load->view($page, $data);
     }
 
-    protected function _check_login(){
-        $this->load->model('Admin_model', 'admin');
-        if(($this->current_user = $this->user->isLogin())){
-            $this->session->set_userdata('logout_url', 'http://www.fumubang.com/group/');
-            return TRUE;
+    protected function _is_login(){
+        $this->load->helper('url');
+        if(empty($_SESSION['user_info'])){
+            redirect('/login');
+            exit;
+        }else{
+            return true;
         }
     }
 }

@@ -1,11 +1,13 @@
 <div class="location">员工列表</div>
 <div class="search">
-        <span>工号:</span>
-        <input type="text" id="keywords_number">
-        <span>姓名:</span>
-        <input type="text" id="keywords_name">
-        <a class="buttom" id="search_btn" href="javascript:void(0)">搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="buttom" href="/staff">查看所有</a>
+    <ul>
+        <li><span>工号:</span><input type="text" id="keywords_number"></li>
+        <li><span>姓名:</span><input type="text" id="keywords_name"></li>
+        <li>
+            <a class="buttom" id="search_btn" href="javascript:void(0)">搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="buttom" href="/staff">查看所有</a>
+        </li>
+    </ul>
 </div>
 <table class="fullwidth" cellpadding="0" cellspacing="0" border="0">
     <thead>
@@ -20,7 +22,7 @@
         <td width="100">手机号码</td>
         <td width="100">座机号码</td>
         <td width="100">注册时间</td>
-        <td widht="100">操作</td>
+        <td widht="120">操作</td>
     </tr>
     </thead>
     <tbody>
@@ -35,7 +37,7 @@
         <td class="center row_<?=$staff['id']?>"><?= $staff['education'];?></td>
         <td class="center row_<?=$staff['id']?>"><?= $staff['phone'];?></td>
         <td class="center row_<?=$staff['id']?>"><?= $staff['tel'];?></td>
-        <td class="center row_<?=$staff['id']?>"><?= date('Y-m-d H:i:s' , $staff['ctime']);?></td>
+        <td class="center row_<?=$staff['id']?>"><?= date('Y-m-d' , $staff['ctime']);?></td>
         <td class="center row_<?=$staff['id']?>"><a href="javascript:void(0)" class="edit_btn" sid="<?= $staff['id']?>">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" sid="<?php echo $staff['id']?>" class="del_btn">删除</a></td>
     </tr>
     <?php endforeach?>

@@ -54,13 +54,18 @@
         keywords_name = $('#keywords_name').val();
         time_left = $('#time_left').val();
         time_right = $('#time_right').val();
+        var status = true;
         $('.time').each(function(){
             var time = $(this).val();
             if(!check_date(time)){
                 $('#time_error').show();
-//                return false;
+                status = false;
+                return false;
             }
         });
+        if(!status){
+            return false;
+        }
         var url = '/task/day?number='+keywords_number+'&name='+keywords_name+'&lt='+time_left+'&rt='+time_right;
         location.href= url;
     });

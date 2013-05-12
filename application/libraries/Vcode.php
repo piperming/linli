@@ -71,9 +71,8 @@ class Vcode {
 
 		//获取验证码
 		public function get_code(){
-			return strtolower($this->code);
+			return strtolower(implode('' , $this->code));
 		}
 
 }
-
-    ?>
+?>

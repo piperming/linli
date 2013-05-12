@@ -3,6 +3,7 @@ class Task extends MY_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('Task_model' , 'task');
+        $this->_is_login();
     }
     /**
      * 工作任务

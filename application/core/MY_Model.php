@@ -65,6 +65,13 @@ class MY_Model extends CI_Model{
     }
 
     /**
+     * 返回Insert后的ID值
+     */
+    public function insert_id(){
+        return $this->db->insert_id();
+    }
+
+    /**
      * 更具主键更新数据
      * @param $new_data
      * @param int $id

@@ -5,6 +5,8 @@ $route['staff/new'] = 'staff/staff_add';
 $route['staff/add'] = 'staff/staff_save';
 $route['task/day'] = 'task/task_day';
 $route['task/month'] = 'task/task_month';
+$route['custom/new'] = 'custom/custom_add';
+$route['custom/add'] = 'custom/custom_save';
 $route['default_controller'] = "login";
 $route['404_override'] = '';
 

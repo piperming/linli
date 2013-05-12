@@ -50,4 +50,34 @@ class Staff_model extends MY_Model{
         }
         return $this->update($data , $id);
     }
+
+    /**
+     * 检查登陆
+     * @param $email
+     * @param $passwd
+     * @return bool
+     */
+    function check_login($email , $passwd){
+        if(empty($email) || empty($passwd)){
+            return false;
+        }
+        $option = array(
+            'condition'=>array('email'=>$email)
+        );
+        $info = $this->get($option);
+        if(count($info)==0){
+            return false;
+        }
+        if($info[0]['passwd'] == md5($passwd)){
+            $_SESSION['user_info']['id'] = $info[0]['id'];
+            $_SESSION['user_info']['role'] = $info[0]['role'];
+            $_SESSION['user_info']['name'] = $info[0]['staff_name'];
+            $_SESSION['user_info']['number'] = $info[0]['staff_number'];
+            $_SESSION['user_info']['email'] = $info[0]['email'];
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 }
